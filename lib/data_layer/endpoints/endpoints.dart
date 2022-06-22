@@ -1,0 +1,1 @@
+const getPlaces = 'GetPlaces.php';
