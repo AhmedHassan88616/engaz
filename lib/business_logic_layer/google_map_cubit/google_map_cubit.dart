@@ -179,7 +179,11 @@ class GoogleMapCubit extends Cubit<GoogleMapState> {
   void _shoBottomSheet(PlaceModel place) async {
     await showModalBottomSheet(
         context: cubitContext!,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(15.0),
+          topRight: Radius.circular(15.0),
+        )),
         backgroundColor: Colors.white,
         isDismissible: false,
         builder: (context) {
@@ -192,6 +196,7 @@ class GoogleMapCubit extends Cubit<GoogleMapState> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
+                  padding: const EdgeInsets.all(15.0),
                   icon: const Icon(
                     Icons.close,
                     color: Colors.red,
@@ -211,6 +216,17 @@ class GoogleMapCubit extends Cubit<GoogleMapState> {
                       fit: BoxFit.fill,
                       errorBuilder: (_, __, ___) => Container(
                         color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
+                      '${place.description}',
+                      style: TextStyle(
+                        fontSize: 18.0,
                       ),
                     ),
                   ),
